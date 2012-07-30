@@ -1,3 +1,4 @@
+<?php $baseUrl = Yii::app()->request->baseUrl; ?>
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */
@@ -9,11 +10,6 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Login</h1>
-
-<p>Please fill out the following form with your login credentials:</p>
-
-<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -21,33 +17,31 @@ $this->breadcrumbs=array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
+<div class="login-main">
+	<div class="login-top"></div>
+	<div class="login-logo"><img src="<?php echo $baseUrl;?>/static/images/login_logo.png" width="294" height="68" /></div>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<div class="row">
+	<div class="login-input">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
 		<?php echo $form->error($model,'username'); ?>
-	</div>
-
-	<div class="row">
+	
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
 		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
+		
 	</div>
 
-	<div class="row rememberMe">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
+    <div class="login-button">
+	<div class="checkbox"><?php echo $form->checkBox($model,'rememberMe'); ?>
+        <span><?php echo $form->labelEx($model,'rememberMe'); ?></span></div>
+	<div class="button"><?php echo CHtml::submitButton('登 录'); ?></div>
 	</div>
+	
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
-	</div>
-
-<?php $this->endWidget(); ?>
+    <div style=" clear:both;"></div>
+	<div class="login-bottom"></div>
+	<div class="back"><a href="<?php echo Yii::app()->homeUrl;?>">&laquo;返回首页</a></div>
 </div><!-- form -->
+<?php $this->endWidget(); ?>
