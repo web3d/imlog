@@ -29,7 +29,7 @@
 	<div id="nav">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'首页', 'url'=>array('/site/index')),
+				array('label'=>'首页', 'url'=>array('/')),
 				array('label'=>'碎语', 'url'=>array('/site/page', 'view'=>'about')),
 				array('label'=>'管理', 'url'=>array('/admin'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'登录', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

@@ -58,79 +58,39 @@
         <tbody>
         <tr>
           <td valign=top align=left width="114">
-            <div id=sidebar>
-            <div class="sidebarmenu" onclick="displayToggle('log_mg', 1);">日志管理</div>
-			<div id="log_mg">
-            <div class="sidebarsubmenu" id="menu_wt"><a href="write_log.php">写日志</a></div>
-			<div class="sidebarsubmenu" id="menu_draft"><a href="admin_log.php?pid=draft">草稿<span id="dfnum">
-			<?php 
-			/*if (ROLE == 'admin'){
-				echo $sta_cache['draftnum'] == 0 ? '' : '('.$sta_cache['draftnum'].')'; 
-			}else{
-				echo $sta_cache[UID]['draftnum'] == 0 ? '' : '('.$sta_cache[UID]['draftnum'].')';
-			}*/
-			?>
-			</span></a></div>
-			<div class="sidebarsubmenu" id="menu_log"><a href="admin_log.php">日志</a></div>
-			<div class="sidebarsubmenu" id="menu_tw"><a href="twitter.php">碎语</a></div>
-			<?php if (ROLE == 'admin'):?>
-            <div class="sidebarsubmenu" id="menu_tag"><a href="tag.php">标签</a></div>
-            <div class="sidebarsubmenu" id="menu_sort"><a href="sort.php">分类</a></div>
-            <?php endif;?>
-            <div class="sidebarsubmenu" id="menu_cm"><a href="comment.php">评论</a> </div>
-            <?php
-			/*$hidecmnum = ROLE == 'admin' ? $sta_cache['hidecomnum'] : $sta_cache[UID]['hidecommentnum'];
-			if ($hidecmnum > 0):
-			$n = $hidecmnum > 999 ? '...' : $hidecmnum;*/
-			?>
-			<div class="coment_number"></div>
-			<?php //endif; ?>
-            <div class="sidebarsubmenu" id="menu_tb"><a href="trackback.php">引用</a></div>
-			</div>
-			</div>
-       	    </td>
-		  </tr>
-		</tbody>
-	</table>
-	<?php if (ROLE == 'admin'):?>
-      <table cellspacing=0 cellpadding=0 width="100%" border=0 >
-        <tbody>
-        <tr>
-          <td valign=top align=left width=114>
-            <div id=sidebar>
-            <div class="sidebarmenu" onclick="displayToggle('blog_mg', 1);">站点管理</div>
-			<div id="blog_mg">
-            <div class="sidebarsubmenu" id="menu_widget"><a href="widgets.php" >Widgets</a></div>
-			<div class="sidebarsubmenu" id="menu_page"><a href="page.php" >页面</a></div>
-			<div class="sidebarsubmenu" id="menu_link"><a href="link.php">链接</a></div>
-			<div class="sidebarsubmenu" id="menu_user"><a href="user.php" >用户</a></div>
-			<div class="sidebarsubmenu" id="menu_data"><a href="data.php">数据</a></div>
-			</div>
+              <div id="sidebar">
+              <?php $this->widget('zii.widgets.CMenu',array(
+                  'activeCssClass' => 'active',
+                  'activateParents' => true,
+			'items'=>array(
+                array('label'=>'日志管理', 'items'=>array(
+                    array('label'=>'写日志', 'url'=>array('/admin/blog/write')),
+                    array('label'=>'草稿', 'url'=>array('/admin/blog/listDraft')),
+                    array('label'=>'日志', 'url'=>array('/admin/blog')),
+                    array('label'=>'标签', 'url'=>array('/admin/tag')),
+                    array('label'=>'分类', 'url'=>array('/admin/category')),
+                    array('label'=>'评论', 'url'=>array('/admin/comment')),
+                    array('label'=>'引用', 'url'=>array('/admin/trackback')),
+                )),
+                array('label'=>'站点管理', 'items'=>array(
+                    array('label'=>'Widgets', 'url'=>array('/admin/widget')),
+                    array('label'=>'页面', 'url'=>array('/admin/blog/listPage')),
+                    array('label'=>'用户', 'url'=>array('/admin/user')),
+                    array('label'=>'数据', 'url'=>array('/admin/data')),
+                )),
+			),
+		)); ?>
+            
 			</div>
 			</td>
 		  </tr>
 		</tbody>
 	</table>
-	<table cellspacing=0 cellpadding=0 width="100%" border=0>
-      <tbody>
-        <tr>
-          <td valign=top align=left width=114>
-            <div id=sidebar>
-            <div class="sidebarmenu" onclick="displayToggle('extend_mg', 1);">功能扩展</div>
-			<div id="extend_mg">
-            <div class="sidebarsubmenu" id="menu_plug"><a href="plugin.php"><img src="./views/images/plugin.gif" align="absbottom" border="0"> 插件</a></div>
-            <?php //doAction('adm_sidebar_ext'); ?>
-			</div>
-			</div>
-       	    </td>
-		  </tr>
-		</tbody>
-	</table>
-	<?php endif;?>
+	
 	<div id="sidebarBottom"></div>
 </td>
 <td id=container valign=top align=left>
-<?php //doAction('adm_main_top'); ?>
+<?php echo $content; //doAction('adm_main_top'); ?>
 <script>
 $("#blog_mg").css('display', $.cookie('em_blog_mg') ? $.cookie('em_blog_mg') : '');
 $("#log_mg").css('display', $.cookie('em_log_mg') ? $.cookie('em_log_mg') : '');

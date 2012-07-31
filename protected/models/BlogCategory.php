@@ -42,7 +42,7 @@ class BlogCategory extends CActiveRecord
 			array('alias', 'length', 'max'=>200),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('sid, sortname, alias, taxis', 'safe', 'on'=>'search'),
+			//array('sid, sortname, alias, taxis', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +63,10 @@ class BlogCategory extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'sid' => 'Sid',
-			'sortname' => 'Sortname',
-			'alias' => 'Alias',
-			'taxis' => 'Taxis',
+			'sid' => '序号',
+			'sortname' => '名称',
+			'alias' => '别名',
+			'taxis' => '排序',
 		);
 	}
 
@@ -81,10 +81,10 @@ class BlogCategory extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('sid',$this->sid);
+		/*$criteria->compare('sid',$this->sid);
 		$criteria->compare('sortname',$this->sortname,true);
 		$criteria->compare('alias',$this->alias,true);
-		$criteria->compare('taxis',$this->taxis);
+		$criteria->compare('taxis',$this->taxis);*/
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

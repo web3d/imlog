@@ -30,6 +30,17 @@ li {
 #container {
 	padding-left:30px;
 }
+
+.grid-view table.items th {
+    background: url(../images/admindex_itembg.gif) repeat-x bottom;
+    color:#666;
+    border: 1px #DFDFDF solid;
+    text-align: left;
+}
+.grid-view table.items th a,.grid-view table.items th a:hover{
+    color:#666;
+}
+
 #menu_wt a {
 	background:url(../images/addblog.gif) no-repeat 18px 1px;
 }
